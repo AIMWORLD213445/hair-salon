@@ -1,0 +1,49 @@
+<div class="row" id="rowbar">
+  <nav class="navbar navbar navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation"><a href = "/clients">List all clients</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<h1 class="jumbotron genrefront" >Hair Salon Management</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <form action="/" method="post">
+      <div class="form-group">
+        <label for="genre">Add a Stylist</label>
+        <input type="text" id="stylist" class="form-control" name="stylist">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Stylist</button>
+    </form>
+    <h3>Clients</h3>
+    <form action="/stylist/stylistId" method="post">
+      <div class="form-group">
+        <label for="client-name">Enter a client name</label>
+        <input id="client-name" class="form-control" name="client-name" type="text">
+      </div>
+      <div class="form-group">
+       <label for="phone-number" >Enter client phone number</label>
+       <input type="text" class="form-control" name="phone-number">
+     </div>
+      <label for="stylistId">Select the client's stylist</label>
+      <select id='stylistId' name='stylistId' type='text' class="form-control">
+        #foreach($stylist in $stylists)
+          <option id="stylistId" value="$stylist.getId()">$stylist.getName()</option>
+          <option id="stylistId" value="$stylist.getId()">$stylist.getPhone()</option>
+        #end
+      </select>
+      <button type="submit" class="btn btn-primary">Add Client</button>
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <div id="scrollhome">
+    #foreach($stylist in $stylists)
+      <h3 id="homegenre"><a href="/stylist/$stylist.getId()">$stylist.getName()</a></h3>
+      <h3 id="homegenre"><a href="/stylist/$stylist.getId()">$stylist.getPhone()</a></h3>
+    #end
+    <h3 id="homegenre"><a href="/clients"><strong><em>All Clients</em></strong></a></h3>
+  </div>
+</div>

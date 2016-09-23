@@ -1,0 +1,33 @@
+<div class="row" id="rowbar">
+  <nav class="navbar navbar navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" ><a href = "/">Back to Homepage</a></li>
+        <li role="presentation"><a href = "/stylist/$stylist.getId()">Back to Stylist</a></li>
+        <li role="presentation"><a href = "/clients">Back to Clients</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+  <div class="jumbotron">
+    <h1>$client.getName()</h1>
+    <h3>Stylist: $stylist.getName()</h3>
+    <h3>Phone Number: $client.getPhone()</h3>
+  </div>
+<div class="row">
+  <div class="col-sm-6">
+    <form action="/stylist/$client.getId()/client/$client.getId()" method="post">
+      <div class="form-group">
+        <label for="name">Client Name</label>
+        <input id="name" class="form-control" name="name" type="text">
+      </div>
+      <label for="phone">Phone Number</label>
+      <input id="phone" class="form-control" name="phone" type="text" >
+      <button type="submit" class="btn btn-primary">Update Client</button>
+    </form>
+
+    <form action="/stylist/$stylist.getId()/client/$client.getId()/delete" method="post">
+      <button type="submit" class="btn btn-warning" id="delete-client">Delete Client</button>
+    </form>
+  </div>
+</div>

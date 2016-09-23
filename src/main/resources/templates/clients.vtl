@@ -1,0 +1,30 @@
+<div class="row" id="rowbar">
+  <nav class="navbar navbar navbar-fixed-top">
+    <div class="container">
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" ><a href = "/">Back to Homepage</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<h1 id="client">Clients</h1>
+
+<div class="jumbotron">
+  <div class="row">
+    <h3 class ="col-sm-10" id="title">Name</h3>
+    <h3 class="col-sm-2" id="phone">Phone Number</h3>
+  </div>
+  #if ($clients)
+    <ul>
+      #foreach ($client in $clients)
+      <div class="row">
+        <h3 class ="col-sm-10"><a href="/stylist/$client.getStylistId()/client/$client.getId()">$client.getName():</a></h3>
+        <h3 class="col-sm-2" >$client.getPhone()%</h3>
+      </div>
+      #end
+    </ul>
+  #else
+    <p>No Clients!</p>
+  #end
+</div>
