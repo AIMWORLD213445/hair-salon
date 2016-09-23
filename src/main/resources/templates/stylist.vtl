@@ -3,26 +3,23 @@
     <div class="container">
       <ul class="nav nav-pills" role="tablist">
         <li role="presentation" ><a href = "/">Back to Homepage</a></li>
-        <li role="presentation"><a href = "/movies">Back to Clients</a></li>
+        <li role="presentation"><a href = "/clients">Back to Clients</a></li>
       </ul>
     </div>
   </nav>
 </div>
-
   <h1 class="stylistfront">$stylist.getName()</h1>
-
 <div class="row">
   <div class="col-md-6">
     <form action="/stylist/$stylist.getId()" method="post">
       <div class="form-group">
         <label for="stylist">Stylist</label>
-        <input id="stylist" name="stylist" class="form-control" type="text">
+        <input id="stylist" name="stylist" class="form-control" type="text" required>
       </div>
       <button type="submit" class="btn btn-primary">Update Stylist</button>
     </form>
-
     <form action="/stylist/$stylist.getId()/delete" method="post">
-      <button type="submit" class="btn btn-warning" id="delete-genre">Delete Genre</button>
+      <button type="submit" class="btn btn-warning" id="delete-stylist">Delete Stylist</button>
     </form>
   </div>
   <div class="col-md-6">

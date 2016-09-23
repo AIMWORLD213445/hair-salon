@@ -20,7 +20,7 @@
       #foreach ($client in $clients)
       <div class="row">
         <h3 class ="col-sm-10"><a href="/stylist/$client.getStylistId()/client/$client.getId()">$client.getName():</a></h3>
-        <h3 class="col-sm-2" >$client.getPhone()%</h3>
+        <h3 class="col-sm-2" >$client.getPhone()</h3>
       </div>
       #end
     </ul>
