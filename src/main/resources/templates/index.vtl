@@ -1,4 +1,4 @@
-<div class="row" id="rowbar">
+<div class="row">
   <nav class="navbar navbar navbar-fixed-top">
     <div class="container">
       <ul class="nav nav-pills" role="tablist">
@@ -8,13 +8,15 @@
   </nav>
 </div>
 
-<h1 class="jumbotron genrefront" >Hair Salon Management</h1>
+<h1 class="jumbotron" >Hair Salon Management</h1>
 <div class="row">
   <div class="col-sm-6">
     <form action="/" method="post">
       <div class="form-group">
         <label for="stylist">Add a Stylist</label>
-        <input type="text" id="stylist" class="form-control" name="stylist" required>
+        <input type="text" id="name" class="form-control" name="name" required>
+        <label for="stylist">Add a Stylist phone number</label>
+        <input type="text" id="phone" class="form-control" name="phone" required>
       </div>
       <button type="submit" class="btn btn-primary">Add Stylist</button>
     </form>
@@ -41,9 +43,9 @@
   <div class="col-sm-6">
     <div id="scrollhome">
     #foreach($stylist in $stylists)
-      <h3 id="homegenre"><a href="/stylist/$stylist.getId()">$stylist.getName()</a></h3>
-      <h3 id="homegenre"><a href="/stylist/$stylist.getId()">$stylist.getPhone()</a></h3>
+      <h3 ><a href="/stylist/$stylist.getId()">$stylist.getName()</a></h3>
+      <h3 ><a href="/stylist/$stylist.getId()">$stylist.getPhone()</a></h3>
     #end
-    <h3 id="homegenre"><a href="/clients"><strong><em>All Clients</em></strong></a></h3>
+    <h3 ><a href="/clients"><strong><em>All Clients</em></strong></a></h3>
   </div>
 </div>
