@@ -21,11 +21,15 @@ public class Client{
     return phone;
   }
 
-  public ont getStylistId() {
-    return name;
+  public int getStylistId() {
+    return stylistId;
   }
 
   public int getId() {
   return id;
   }
+
+  // public static List<Client> all() {
+  //
+  // }
 }

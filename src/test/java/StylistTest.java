@@ -7,7 +7,7 @@ public class StylistTest{
   Stylist stylist;
   @Before
   public void setUp() {
-     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon-test", null, null);
+     DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", null, null);
      stylist = new Stylist ("John", "555-555-5555" );
   }
 
@@ -28,7 +28,7 @@ public class StylistTest{
 
   @Test
   public void getName_instantiatesWithName_String(){
-    assertEquals("John", Stylist.getName());
+    assertEquals("John", stylist.getName());
   }
 
   // @Test
