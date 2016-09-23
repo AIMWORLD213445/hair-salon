@@ -24,15 +24,15 @@ public class Stylist{
   }
 
   public static List<Stylist> all() {
-    String sql = "SELECT * FROM stylists ORDER BY ASC";
+    String sql = "SELECT * FROM stylists";
     try(Connection con =DB.sql2o.open()){
       return con.createQuery(sql)
-      .executeAndFetch(Stylist.class)
+      .executeAndFetch(Stylist.class);
     }
   }
 
   public void save() {
-    tring sql = "INSERT INTO stylists (name, phone) VALUES (:name, :phone)";
+    String sql = "INSERT INTO stylists (name, phone) VALUES (:name, :phone)";
     try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql,true)
       .addParameter("name",this.name)
@@ -48,9 +48,9 @@ public class Stylist{
       return false;
     } else {
       Stylist newStylist = (Stylist) otherStylist;
-      return this.getName().equals(newClient.getName()) &&
-             this.getPhone().equals(newClient.getPhone()) &&
-             this.getId() == newClient.getId();
+      return this.getName().equals(newStylist.getName()) &&
+             this.getPhone().equals(newStylist.getPhone()) &&
+             this.getId() == newStylist.getId();
     }
   }
 
@@ -59,17 +59,17 @@ public class Stylist{
     try(Connection con = DB.sql2o.open()){
       return con.createQuery(sql)
       .addParameter("id",id)
-      .executeAndFetchFirst(Client.class);
+      .executeAndFetchFirst(Stylist.class);
     }
   }
 
   public void update (String name, String phone) {
-    String sql = "UPDATE stylists SET name = :name, phone = :phone,  WHERE id = :id";
+    String sql = "UPDATE stylists SET name = :name, phone = :phone  WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
       .addParameter("name", name)
       .addParameter("phone", phone)
-      .addParameter("id", this.id)
+      .addParameter("id", id)
       .executeUpdate();
     }
   }
@@ -84,7 +84,7 @@ public class Stylist{
   }
 
   public List<Client> getClients(){
-   String sql = "SELECT * FROM clients WHERE stylistId =:id ORDER BY name ASC";
+   String sql = "SELECT * FROM clients WHERE stylistId =:id";
    try(Connection con = DB.sql2o.open()){
      return con.createQuery(sql)
      .addParameter("id",this.id)

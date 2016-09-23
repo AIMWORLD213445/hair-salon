@@ -25,10 +25,12 @@ public class ClientTest{
   public void client_instantiatesCorrectly_true() {
     assertTrue(client instanceof Client);
   }
+
   @Test
   public void getName_instantiatesWithName_String() {
     assertEquals("Brian", client.getName());
   }
+
   @Test
   public void getPhone_instantiatesWithPhoneNumber_String() {
     assertEquals("555-555-5555", client.getPhone());
@@ -55,17 +57,15 @@ public class ClientTest{
   }
 
   @Test
-  public void equals_returnsTrueIfFieldsAreSame_true() {
-    client.save();
-    Client secondClient = new Client("Tim", "111-111-1111", 1);
-    secondClient.save();
+  public void equals_returnsTrueIfCharacteristicsAreTheSame() {
+    Client secondClient = new Client("Brian", "555-555-5555", 1);
     assertTrue(client.equals(secondClient));
-  }
+}
 
   @Test
-  public void save_returnsTrueIfFieldsAreSame() {
+  public void save_returnsTrueIfFieldsAreSame_true() {
     client.save();
-    assertTrue(Client.all().get(0).equals(client));
+    assertEquals(true, Client.all().get(0).equals(client));
   }
 
   @Test

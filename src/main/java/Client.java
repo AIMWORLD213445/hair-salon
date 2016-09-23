@@ -30,15 +30,15 @@ public class Client{
   }
 
   public static List<Client> all() {
-    String sql = "SELECT * FROM clients ORDER BY ASC";
+    String sql = "SELECT * FROM clients";
     try(Connection con =DB.sql2o.open()){
       return con.createQuery(sql)
-      .executeAndFetch(Client.class)
+      .executeAndFetch(Client.class);
     }
   }
 
   public void save() {
-    tring sql = "INSERT INTO clients (name, phone, stylistId) VALUES (:name, :phone, :stylistId)";
+    String sql = "INSERT INTO clients (name, phone, stylistId) VALUES (:name, :phone, :stylistId)";
     try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql,true)
       .addParameter("name",this.name)
@@ -55,9 +55,9 @@ public class Client{
       return false;
     } else {
       Client newClient = (Client) otherClient;
-      return this.getName().equals(newClient.getName()) &&
+      return this.getId() == newClient.getId() &&
+             this.getName().equals(newClient.getName()) &&
              this.getPhone().equals(newClient.getPhone()) &&
-             this.getId() == newClient.getId() &&
              this.getStylistId() == newClient.getStylistId();
     }
   }
