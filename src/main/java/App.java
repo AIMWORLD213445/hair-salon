@@ -28,7 +28,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //gets genre page
+    //gets stylist page
     get("/stylist/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist newStylist = Stylist.find(Integer.parseInt(request.params(":id")));
@@ -38,7 +38,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //prints movies on genre page
+    //prints clients on stylist page
     post("/stylist/stylistId", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist newStylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
@@ -51,7 +51,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //lists all movies
+    //lists all clients
     get("/clients", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("clients", Client.all());
@@ -59,7 +59,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-//shows movie information
+    //shows client information
     get("/stylist/:stylistId/client/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylistId")));
@@ -70,7 +70,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //updates movie
+    //updates client
     post("/stylist/:stylistId/client/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params("id")));
@@ -83,7 +83,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //deletes movie
+    //deletes client
     post("/stylist/:stylistId/client/:id/delete", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Client client = Client.find(Integer.parseInt(request.params("id")));
@@ -94,7 +94,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //updates genre
+    //updates stylist
     post("/stylist/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
@@ -106,7 +106,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    //deletes a genre
+    //deletes a stylist
     post("/stylist/:id/delete", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
