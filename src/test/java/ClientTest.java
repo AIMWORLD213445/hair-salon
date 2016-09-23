@@ -39,9 +39,77 @@ public class ClientTest{
     assertEquals(1, client.getStylistId());
   }
 
-  // @Test
-  // public void getId_clientsInstantiateWithId_1() {
-  //   client.save();
-  //   assertTrue(client.getId()> 0);
-  // }
+  @Test
+  public void getId_clientsInstantiateWithId_1() {
+    client.save();
+    assertTrue(client.getId()> 0);
+  }
+
+  @Test
+  public void all_returnsAllClientInstances_true() {
+    client.save();
+    Client secondClient = new Client("Tim", "111-111-1111", 1);
+    secondClient.save();
+    assertEquals(true, Client.all().get(0).equals(client));
+    assertEquals(true, Client.all().get(1).equals(secondClient));
+  }
+
+  @Test
+  public void equals_returnsTrueIfFieldsAreSame_true() {
+    client.save();
+    Client secondClient = new Client("Tim", "111-111-1111", 1);
+    secondClient.save();
+    assertTrue(client.equals(secondClient));
+  }
+
+  @Test
+  public void save_returnsTrueIfFieldsAreSame() {
+    client.save();
+    assertTrue(Client.all().get(0).equals(client));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    client.save();
+    Client savedClient = Client.all().get(0);
+    assertEquals(client.getId(), savedClient.getId());
+  }
+
+  @Test
+  public void save_savesStylistIdIntoDB_true() {
+    Stylist stylist = new Stylist("John", "555-555-5555");
+    stylist.save();
+    client = new Client("Brian", "999-999-9999", stylist.getId());
+    client.save();
+    Client savedClient = Client.find(client.getId());
+    assertEquals(savedClient.getStylistId(), stylist.getId());
+  }
+
+  @Test
+  public void find_returnsClientWithSameId_secondEntry() {
+    client.save();
+    Client secondClient = new Client("Brian", "999-999-9999", 1);
+    secondClient.save();
+    assertEquals(Client.find(secondClient.getId()), secondClient);
+  }
+
+  @Test
+  public void delete_deletesClient_true() {
+    Client client = new Client("Brian", "999-999-9999", 1);
+    client.save();
+    int clientId = client.getId();
+    client.delete();
+    assertEquals(null, Client.find(clientId));
+  }
+
+  @Test
+  public void update_UpdatesTheClient_Void(){
+    client.save();
+    client.update("Claire","111-111-1111", 2);
+    assertEquals("Claire", Client.find(client.getId()).getName());
+    assertEquals("111-111-1111", Client.find(client.getId()).getPhone());
+    assertEquals(2 ,Client.find(client.getId()).getStylistId());
+  }
+
+
 }
