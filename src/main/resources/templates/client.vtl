@@ -19,10 +19,10 @@
     <form action="/stylist/$client.getId()/client/$client.getId()" method="post">
       <div class="form-group">
         <label for="name">Client Name</label>
-        <input id="name" class="form-control" name="name" type="text">
+        <input id="name" class="form-control" name="name" type="text" required>
       </div>
-      <label for="phone">Phone Number</label>
-      <input id="phone" class="form-control" name="phone" type="text" >
+        <label for="phone">Phone Number</label>
+        <input id="phone" class="form-control" name="phone" type="text" required>
       <button type="submit" class="btn btn-primary">Update Client</button>
     </form>
 

@@ -41,10 +41,10 @@ public class App {
     //prints movies on genre page
     post("/stylist/stylistId", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      Stylist theStylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
+      Stylist newStylist = Stylist.find(Integer.parseInt(request.queryParams("stylistId")));
       String clientName = request.queryParams("client-name");
       String phoneNumber = request.queryParams("phone-number");
-      Client newClient = new Client(clientName,phoneNumber,theStylist.getId());
+      Client newClient = new Client(clientName,phoneNumber,newStylist.getId());
       newClient.save();
       String url = String.format("/stylist/%d", newClient.getStylistId());
       response.redirect(url);
@@ -66,7 +66,7 @@ public class App {
       Client client = Client.find(Integer.parseInt(request.params(":id")));
       model.put("client", client);
       model.put("stylist", stylist);
-      model.put("template", "templates/movie.vtl");
+      model.put("template", "templates/client.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
