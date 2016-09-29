@@ -49,6 +49,7 @@ public class ClientTest{
 
   @Test
   public void all_returnsAllClientInstances_true() {
+    Client client = new Client("Brian", "999-999-9999", 1);
     client.save();
     Client secondClient = new Client("Tim", "111-111-1111", 1);
     secondClient.save();

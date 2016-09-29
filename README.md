@@ -14,7 +14,7 @@ _Clone the repo and open it up.
 In PSQL:
 CREATE DATABASE hair_salon;
 CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, phone varchar);
-CREATE TABLE clients (id serial PRIMARY KEY, name varchar, phone varchar, stylist_id int);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, phone varchar, stylistId int);
 CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
 _
 

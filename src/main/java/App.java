@@ -89,6 +89,7 @@ public class App {
       Client client = Client.find(Integer.parseInt(request.params("id")));
       Stylist stylist = Stylist.find(client.getStylistId());
       client.delete();
+      model.put("clients", Client.all());
       model.put("stylist", stylist);
       model.put("template", "templates/stylist.vtl");
       return new ModelAndView(model, layout);
@@ -111,6 +112,9 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
       stylist.delete();
+      for(Client client : stylist.getClients()){
+        client.delete();
+      }
       model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);

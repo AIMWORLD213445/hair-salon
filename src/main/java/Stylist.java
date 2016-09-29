@@ -64,13 +64,13 @@ public class Stylist{
   }
 
   public void update (String name, String phone) {
-    String sql = "UPDATE stylists SET name = :name, phone = :phone  WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
+    String sql = "UPDATE stylists SET name = :name, phone = :phone  WHERE id = :id";
       con.createQuery(sql)
-      .addParameter("name", name)
-      .addParameter("phone", phone)
-      .addParameter("id", id)
-      .executeUpdate();
+        .addParameter("name", name)
+        .addParameter("phone", phone)
+        .addParameter("id", this.id)
+        .executeUpdate();
     }
   }
 
