@@ -13,9 +13,9 @@ _A hair salon application that allows users to generate client/stylist lists and
 _Clone the repo and open it up.
 In PSQL:
 CREATE DATABASE hair_salon;
-CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
-CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
-CREATE DATABASE hair-salon_test WITH TEMPLATE hair-salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, phone varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, phone varchar, stylist_id int);
+CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
 _
 
 ## Specifications
